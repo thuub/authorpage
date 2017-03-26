@@ -1,0 +1,72 @@
+\sum \limits_{i=1}^{123*n}
+[
+    {
+        "type": "supsub",
+        "value": {
+            "base": {
+                "type": "op",
+                "value": {
+                    "type": "op",
+                    "limits": true,
+                    "symbol": true,
+                    "body": "\\sum",
+                    "alwaysHandleSupSub": true
+                },
+                "mode": "math"
+            },
+            "sup": {
+                "type": "ordgroup",
+                "value": [
+                    {
+                        "type": "textord",
+                        "value": "1",
+                        "mode": "math"
+                    },
+                    {
+                        "type": "textord",
+                        "value": "2",
+                        "mode": "math"
+                    },
+                    {
+                        "type": "textord",
+                        "value": "3",
+                        "mode": "math"
+                    },
+                    {
+                        "type": "bin",
+                        "value": "*",
+                        "mode": "math"
+                    },
+                    {
+                        "type": "mathord",
+                        "value": "n",
+                        "mode": "math"
+                    }
+                ],
+                "mode": "math"
+            },
+            "sub": {
+                "type": "ordgroup",
+                "value": [
+                    {
+                        "type": "mathord",
+                        "value": "i",
+                        "mode": "math"
+                    },
+                    {
+                        "type": "rel",
+                        "value": "=",
+                        "mode": "math"
+                    },
+                    {
+                        "type": "textord",
+                        "value": "1",
+                        "mode": "math"
+                    }
+                ],
+                "mode": "math"
+            }
+        },
+        "mode": "math"
+    }
+]

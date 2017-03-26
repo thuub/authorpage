@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!--<base href="/">-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,user-scalable=no"/>
+
+    <link rel="stylesheet" href="styles/bootstrap.grid.css">
+    <link rel="stylesheet" href="styles/hint.min.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="bower_components/vis/dist/vis.css">
+    <link rel="stylesheet" href="styles/loader.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/publication.css">
+    <link rel="stylesheet" href="styles/latext.css">
+    <link rel="stylesheet" href="styles/index-calculator.css">
+    <link rel="stylesheet" href="styles/cit-network.css">
+
+    <title>Author Page</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+        <author-overview publin-id="1"></author-overview>
+        <publication-list publin-id="1"></publication-list>
+        </div>
+        <div class="col-md-6">
+        <cite-space publin-id="1"></cite-space>
+        <index-editor publin-id="1"></index-editor>
+        </div>
+    </div>
+</div>
+
+
+<script src="//code.highcharts.com/highcharts.js"></script>
+<script src="//code.highcharts.com/highcharts-more.js"></script>
+<script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+<script src="bower_components/clipboard/dist/clipboard.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-ace/ui-ace.js"></script>
+<script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/vis/dist/vis.min.js"></script>
+<script src="bower_components/highcharts-ng/dist/highcharts-ng.min.js"></script>
+<script src="bower_components/mathjs/dist/math.min.js"></script>
+
+<script src="app.js"></script>
+<script src="app.config.js"></script>
+
+<script src="scripts/include-with-scope/include-with-scope.directive.js"></script>
+<script src="bower_components/angular-clipboard/angular-clipboard.js"></script>
+<script src="scripts/rest/rest.module.js"></script>
+<script src="scripts/focusOn/focusOn.factory.js"></script>
+<script src="scripts/dataprovider/dataprovider.service.js"></script>
+<script src="bower_components/angular-resizable/angular-resizable.min.js"></script>
+<script src="scripts/math/katex.min.js"></script>
+
+<script src="scripts/author-overview/author-overwiew-directive.js"></script>
+<script src="scripts/publication-list/publication-list.directive.js"></script>
+<script src="scripts/publication-list/publication-element.js"></script>
+<script src="scripts/publication-abstract/publication-abstract.directive.js"></script>
+<script src="scripts/sv-element-loader/sv-element-loader.directive.js"></script>
+<script src="scripts/sv-element-indexoverview/sv-element-indexoverview.directive.js"></script>
+<script src="scripts/index-editor/index-editor.directive.js"></script>
+<script src="scripts/index-editor/index-editor.link.js"></script>
+<script src="scripts/citeSpace/citeSpace.directive.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+    /*background-color: #eeeeee;*/
+    min-height: inherit;
+}
+.md-icon-button.md-icon-button-small {
+    margin: 0;
+    width: auto
+}
+.toolbar-top-overwrite {
+    margin: 0 !important;
+    height: 28px !important;
+    width: 28px !important;
+    padding: 0 !important;
+    line-height: 28px !important;
+    overflow: hidden !important;
+    display: block !important;
+    min-height: 28px !important;
+}
+
+.md-button.md-icon-button.input-close {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    top: 0;
+    height: 28px;
+    line-height: 42px;
+    max-height: 28px;
+    min-height: 28px;
+    border-radius: 0;
+    width: 28px;
+}
+
+.md-errors-spacer {
+    display: none;
+}
+md-input-container {
+    /*margin-top: 8px;*/
+    margin-bottom: 0;
+}
+
+.flat {
+    margin: 0;
+}
+
+md-select.md-default-theme .md-select-value, md-select .md-select-value {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+md-toolbar md-select {
+    margin: 0;
+}
+
+html, body {
+    background: #fafafa;
+    /*background: lightblue;*/
+}
+
+.md-button._md-nav-button {
+
+    padding-left: 8px;
+    padding-right: 8px;
+    min-width: inherit;
+}
+
+md-dialog md-dialog-content{
+    overflow-x: hidden;
+}
+md-progress-linear.md-default-theme .md-container, md-progress-linear .md-container {
+    background-color: #D6DFE4;
+}
+
+body,html{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+cite-space,
+index-editor,
+author-overview,
+publication-list{
+    display: block;
+    overflow: hidden;
+}
+
+.white-space-normal h4 {
+    white-space: normal !important;
+}
+.bg-turkis{background-color: #1a3c4d !important;}
+.bg-black-lighten{background-color: #333 !important;}
+.bg-black{background-color: #000 !important;}
+.bg-white{background-color: #fff !important;}
+.bg-white-darken{background-color: #fafafa !important;}
+.bg-white-dark{background-color: #f6f6f6 !important;}
+.bg-trans{background-color: transparent !important;}
+
+.co-turkis{color: #1a3c4d !important;}
+.co-black-lighten{color: #333 !important;}
+.co-black{color: #000 !important;}
+.co-white{color: #fff !important;}
+
+.co-white-darken{color: #fafafa !important;}
+
+.pa-8{padding: 8px !important;}
+.pa-tb-8{padding-top: 8px !important; padding-bottom: 8px !important;}
+.pa-16{padding: 16px !important;}
+.pa-lr-16{padding: 0 16px !important;}
+.pa-tb-16{padding: 16px 0 !important;}
+.pa-24{padding: 24px !important;}
+
+.bo-bot-eee{
+    border-bottom: 1px solid #ddd
+}
+
+.sv-bar-values{
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+    font-weight: 100 !important;
+    font-size: 10px !important;
+    opacity:0.7;
+}

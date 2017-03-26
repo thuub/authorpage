@@ -1,0 +1,24 @@
+<md-bottom-sheet class="md-grid" layout="column">
+    <div class="bottom-sheet-title"><b>Search</b></div>
+
+    <md-content layout="row" layout-align="center start" style="padding-bottom: 22px;">
+        <form ng-submit="$event.preventDefault()" flex="60">
+            <md-autocomplete
+                    md-selected-item="autocomplete.selectedItem"
+                    md-search-text-change="searchTextChange(autocomplete.searchText)"
+                    md-search-text="autocomplete.searchText"
+                    md-selected-item-change="selectedItemChange(item)"
+                    md-items="item in querySearch(autocomplete.searchText)"
+                    md-item-text="item.Family"
+                    md-min-length="1"
+                    placeholder="Search for authors">
+                <md-item-template>
+                    <span md-highlight-text="autocomplete.searchText" md-highlight-flags="^ig">{{item.Family}}, {{item.Given}}</span>
+                </md-item-template>
+                <md-not-found>
+                    Nothing found for: "{{autocomplete.searchText}}"
+                </md-not-found>
+            </md-autocomplete>
+        </form>
+    </md-content>
+</md-bottom-sheet>

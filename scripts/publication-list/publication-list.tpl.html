@@ -1,0 +1,70 @@
+<md-card layout="column" ng-style="style" ng-class="{'flat' : flat}" class="sv-publications">
+    <md-toolbar class="bg-white co-black-lighten pa-16">
+        <div layout="row" layout-align="space-between start" ng-show="!filterVisible && !showSelectBox">
+            <span>Publikationen</span>
+            <span layout="row" class="showOnHover">
+                <md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" ng-click="showFilter()">
+                    <ng-md-icon icon="search" style="fill:#333" size="24"></ng-md-icon>
+                    <md-tooltip>Search</md-tooltip>
+                </md-button>
+                <md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" ng-click="showSelectBox = !showSelectBox">
+                    <ng-md-icon icon="select_all" style="fill:#333" size="24"></ng-md-icon>
+                    <md-tooltip>Select</md-tooltip>
+                </md-button>
+            </span>
+        </div>
+        <div layout="row" layout-align="space-between start" ng-show="filterVisible" style="height: 28px;">
+            <div layout="row" layout-align="space-between start">
+            <ng-md-icon icon="search" style="fill:#333" size="24"></ng-md-icon>
+                <md-input-container md-no-float class="md-block" style="margin: -4px 0 0 16px;padding:0; width: 400px;">
+                    <md-button class="md-icon-button input-close" aria-label="close" ng-click="searchValue = ''" ng-show="searchValue.length >0">
+                        <ng-md-icon icon="close" style="fill:#333" size="24"></ng-md-icon>
+                        <md-tooltip>clear input</md-tooltip>
+                    </md-button>
+                    <input focus-on="filterActive" name="Search1" ng-model="searchValue" placeholder="Search">
+                </md-input-container>
+            </div>
+            <md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" ng-click="hideFilter()">
+                <ng-md-icon icon="close" style="fill:#333" size="24"></ng-md-icon>
+                <md-tooltip>close</md-tooltip>
+            </md-button>
+        </div>
+        <div layout="row" layout-align="space-between start" ng-show="showSelectBox" style="height: 28px;">
+            <span layout="row" class="sv-pub-export">
+                <span>
+                    <md-checkbox aria-label="checkbox" ng-model="selectAll" ng-click="toggleSelectAll()"></md-checkbox>
+                     <md-tooltip>Select ALL</md-tooltip>
+                </span>
+                <md-select ng-model="exportFormat" placeholder="Export type" class="md-no-underline" style="margin-top: -8px; height: 42px;">
+                    <md-option value="bibtex"><img src="https://www.ifis.uni-luebeck.de/typo3conf/ext/wa_publications/pi1/static/world_go.png"> BibTex</md-option>
+                    <md-option value="json"><img src="https://www.ifis.uni-luebeck.de/typo3conf/ext/wa_publications/pi1/static/world_go.png"> JSON</md-option>
+                    <!--<md-option value="-"><img src="https://www.ifis.uni-luebeck.de/typo3conf/ext/wa_publications/pi1/static/world_go.png">  ???</md-option>-->
+                </md-select>
+                <md-button ng-click="exportSelectedElements()" class="md-primary toolbar-top-overwrite" aria-label="select All" style="margin-top:-3px;">
+                   Export
+                    <md-tooltip>Export</md-tooltip>
+                </md-button>
+
+                </span>
+            <md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" ng-click="showSelectBox = false" >
+                <ng-md-icon icon="close" style="fill:#333" size="24"></ng-md-icon>
+                <md-tooltip>close</md-tooltip>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content flex class="sv-publist" style="background: #fff">
+        <sv-element-loader show="DataProvider.data[publinId].request == 'pending'"></sv-element-loader>
+        <ul ng-if="DataProvider.publicationData[publinId][year]"
+            ng-repeat="year in DataProvider.publicationDataYears[publinId]">
+            <li class="year">{{year}}</li>
+            <li
+                    ng-repeat="publication in DataProvider.publicationData[publinId][year] | filter:selectedYear| filter:searchValue track by $index"
+                    class="transition"
+                    ng-class="publication.showDesc ? 'showDesc' : ''"
+            >
+                <publication-element publication="publication" show-select-box="showSelectBox"></publication-element>
+            </li>
+        </ul>
+    </md-content>
+</md-card>
+

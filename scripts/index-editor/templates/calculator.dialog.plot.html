@@ -1,0 +1,260 @@
+<md-dialog aria-label="Mango (Fruit)" class="fullscreen-dialog">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Plot Settings</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()" aria-label="cancel">
+                    <ng-md-icon icon="close" style="fill:#fff" size="24"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <!--<md-dialog-content style="max-width:800px;max-height:810px; ">-->
+        <md-dialog-content style="max-height:810px; ">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Diagram Type">
+                    <md-content class="md-padding">
+                        <div>
+                            Please select a chart type
+                        </div>
+                            <div class="sv-radio-group" layout="row" layout-wrap>
+                                <input id="radio-chart-line" type="radio" name="creditcard" ng-model="chartTypeRadio" value="line" ng-click="setChartType('line')" />
+                                <label flex="33" class="sv-radio-group-elem radio-bar-chart" for="radio-chart-line">LINE</label>
+
+                                <input id="radio-chart-column" type="radio" name="creditcard" ng-model="chartTypeRadio" value="column" ng-click="setChartType('column')" />
+                                <label flex="33" class="sv-radio-group-elem radio-bar-chart" for="radio-chart-column">COLUMN</label>
+
+                                <input id="radio-chart-bar" type="radio" name="creditcard" ng-model="chartTypeRadio" value="mastercard" ng-click="setChartType('stackedGrouped')" />
+                                <label flex="33" class="sv-radio-group-elem radio-bar-chart" for="radio-chart-bar">STACKET & GROUPED</label>
+
+                                <input id="radio-chart-pie" type="radio" name="creditcard" ng-model="chartTypeRadio" value="pie" ng-click="setChartType('pie')" />
+                                <label flex="33" class="sv-radio-group-elem radio-bar-chart" for="radio-chart-pie">PIE</label>
+
+                                <input id="radio-chart-scatter" type="radio" name="creditcard" ng-model="chartTypeRadio" value="scatter" ng-click="setChartType('scatter')" />
+                                <label flex="33" class="sv-radio-group-elem radio-bar-chart" for="radio-chart-scatter">SCATTERPLOT</label>
+
+                                <input id="radio-chart-heatmap" type="radio" name="creditcard" ng-model="chartTypeRadio" value="heatmap" ng-click="setChartType('heatmap')" />
+                                <label flex="33" class="sv-radio-group-elem radio-bar-chart" for="radio-chart-heatmap">HEATMAP</label>
+
+                                <input id="radio-chart-spider" type="radio" name="creditcard" ng-model="chartTypeRadio" value="spider" ng-click="setChartType('spider')" />
+                                <label flex="33" class="sv-radio-group-elem radio-bar-chart" for="radio-chart-spider">SPIDER</label>
+
+                                <input id="radio-chart-0" type="radio" name="creditcard" ng-model="chartTypeRadio" value="0" ng-click="setChartType('0')" />
+                                <label flex="33" class="sv-radio-group-elem radio-bar-chart" for="radio-chart-0">barchart7</label>
+
+                                <input id="radio-chart-1" type="radio" name="creditcard" ng-model="chartTypeRadio" value="1" ng-click="setChartType('1')" />
+                                <label flex="33" class="sv-radio-group-elem radio-bar-chart" for="radio-chart-1">barchart7</label>
+                            </div>
+
+                    </md-content>
+                </md-tab>
+                <md-tab label="Data" ng-disabled="!chartData.chart.type">
+                    <md-content class="md-padding">
+                        <div>
+                        </div>
+                        <div layout="row" layout-align="end start">
+                            <md-button ng-click="accordion.expandAll()">Expand all</md-button>
+                            <md-button ng-click="accordion.collapseAll()">Collapse all</md-button>
+                        </div>
+                        <v-accordion id="my-accordion" multiple control="accordion" class="vAccordion--default">
+                            <v-pane>
+                                <v-pane-header>
+                                    General<span style="width: 100px;display:inline-block"></span> <i ng-if="chartData.chart.zoomType!== 'none'">zoom</i>
+                                </v-pane-header>
+                                <v-pane-content>
+                                    <md-content>
+                                        <div layout="row">
+                                            <md-input-container flex="20" class="calc-input-container">
+                                                <label>Allow Zoom</label>
+                                                <md-select ng-model="chartData.chart.zoomType">
+                                                    <md-option value="none">none</md-option>
+                                                    <md-option value="x">x</md-option>
+                                                    <md-option value="y">y</md-option>
+                                                    <md-option value="xy">xy</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </md-content>
+                                </v-pane-content>
+                            </v-pane>
+
+                            <v-pane>
+                                <v-pane-header>
+                                    Title <span style="width: 100px;display:inline-block"></span><i>{{chartData.title.text}}</i>
+                                </v-pane-header>
+                                <v-pane-content>
+                                    <md-content>
+                                        <div layout="row">
+                                            <md-input-container flex="40" class="calc-input-container">
+                                                <label>Title</label>
+                                                <input ng-model="chartData.title.text">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout="row">
+                                            <md-input-container flex="40" class="calc-input-container">
+                                                <label>Subtitle</label>
+                                                <input ng-model="chartData.subtitle.text">
+                                            </md-input-container>
+
+                                            <md-input-container flex="20" class="calc-input-container">
+                                                <label>Subtitle align</label>
+                                                <md-select ng-model="chartData.subtitle.align">
+                                                    <md-option value="left">left</md-option>
+                                                    <md-option value="center">center</md-option>
+                                                    <md-option value="right">right</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </md-content>
+                                </v-pane-content>
+
+                            </v-pane>
+
+                            <v-pane>
+                                <v-pane-header>
+                                    xAxis <span style="width: 100px;display:inline-block"></span>
+                                </v-pane-header>
+                                <v-pane-content>
+                                    <md-content>
+                                        <div layout="row">
+                                            <md-input-container flex="40" class="calc-input-container">
+                                                <label>Title</label>
+                                                <input ng-model="chartData.title.text">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout="row">
+                                            <md-input-container flex="40" class="calc-input-container">
+                                                <label>Subtitle</label>
+                                                <input ng-model="chartData.subtitle.text">
+                                            </md-input-container>
+
+                                            <md-input-container flex="20" class="calc-input-container">
+                                                <label>Subtitle align</label>
+                                                <md-select ng-model="chartData.subtitle.align">
+                                                    <md-option value="left">left</md-option>
+                                                    <md-option value="center">center</md-option>
+                                                    <md-option value="right">right</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </md-content>
+                                </v-pane-content>
+
+                            </v-pane>
+
+                            <v-pane>
+                                <v-pane-header>
+                                    yAxis <span style="width: 100px;display:inline-block"></span>
+                                </v-pane-header>
+                                <v-pane-content>
+                                    <md-content>
+                                        <div layout="row">
+                                            <md-input-container flex="40" class="calc-input-container">
+                                                <label>Title</label>
+                                                <input ng-model="chartData.title.text">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout="row">
+                                            <md-input-container flex="40" class="calc-input-container">
+                                                <label>Subtitle</label>
+                                                <input ng-model="chartData.subtitle.text">
+                                            </md-input-container>
+
+                                            <md-input-container flex="20" class="calc-input-container">
+                                                <label>Subtitle align</label>
+                                                <md-select ng-model="chartData.subtitle.align">
+                                                    <md-option value="left">left</md-option>
+                                                    <md-option value="center">center</md-option>
+                                                    <md-option value="right">right</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                    </md-content>
+                                </v-pane-content>
+
+                            </v-pane>
+
+
+                            <v-pane id="{{ pane.id }}" ng-repeat="serie in chartData.series">
+                                <v-pane-header>
+                                    {{ serie.header }}
+                                </v-pane-header>
+
+                                <v-pane-content>
+                                    <md-input-container>
+                                        <label>name</label>
+                                        <input ng-model="series.name">
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>data</label>
+                                        <input ng-model="series.data">
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>stack</label>
+                                        <input ng-model="series.stack">
+                                    </md-input-container>
+                                </v-pane-content>
+                            </v-pane>
+
+                        </v-accordion>
+
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <td>ADD</td>
+                                <td>VALUE</td>
+                                <td>KEY</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="(value,key) in availableData">
+                                <td>ADD</td>
+
+                                <td>{{value}}</td>
+                                <td>
+                                    <div ng-repeat="(valuevalue, keykey) in key">
+
+                                        <div>{{valuevalue}}</div>
+                                        <div>{{keykey}}</div>
+
+
+                                    </div>
+
+
+                                </td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Export">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Tab Three</h1>
+                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+
+
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+                More on Wikipedia
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="cancel()" aria-label="cancel">
+                Cancel
+            </md-button>
+            <md-button ng-click="answer('useful')" style="margin-right:20px;" >
+                Generate
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
+

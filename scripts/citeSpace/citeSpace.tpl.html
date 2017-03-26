@@ -1,0 +1,42 @@
+<md-card layout="column">
+    <md-toolbar class="bg-white co-black-lighten pa-16" style="height: 60px; overflow: hidden;">
+        <div layout="row" layout-align="space-between start">
+            <span ng-show="!showFilter">Zitationsgraph</span>
+            <div ng-show="showFilter" layout="row" layout-align="end start" style="margin-top:-8px;">
+                <md-button class="cit-toolbar-button" ng-style="{'opacity' : edgeHidden ? 0.6 : 1}" ng-click="toggleEdges()"><ng-md-icon icon="{{edgeHiddenIcon}}" style="fill:#333; vertical-align: sub;" size="18"></ng-md-icon>citations</md-button>
+                <md-button class="cit-toolbar-button" ng-click="doFullscreen()"><ng-md-icon icon="fullscreen" style="fill:#333; vertical-align: sub;" size="18"></ng-md-icon>fullscreen</md-button>
+                <form ng-submit="$event.preventDefault()">
+                    <md-autocomplete
+                            md-selected-item="selectedItem.title"
+                            md-search-text="searchText"
+                            md-selected-item-change="selectedItemChange(item)"
+                            md-items="item in querySearch(searchText)"
+                            md-item-text="item.label"
+                            md-min-length="3"
+                            placeholder="Search by title"
+                            md-menu-class="autocomplete-custom-template">
+                        <md-item-template>
+                            <span class="item-title">
+                                <ng-md-icon ng-if="item.group == 'publication'" title="Publication" icon="book" style="fill:#333; vertical-align: sub;" size="18"></ng-md-icon>
+                                <ng-md-icon ng-if="item.group == 'cite'" title="Cite" icon="my_library_books" style="fill:#333; vertical-align: sub;" size="18"></ng-md-icon>
+                              <span md-highlight-text="searchText" md-highlight-flags="^i" title="{{item.label}}"> {{item.label}}</span>
+                              </span>
+                            <md-not-found>No publications matching "{{searchText}}" were found.</md-not-found>
+                        </md-item-template>
+                    </md-autocomplete>
+                </form>
+            </div>
+            <md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" ng-click="showFilter = !showFilter">
+                <ng-md-icon ng-show="!showFilter" icon="more_vert" style="fill:#333" size="24"></ng-md-icon>
+                <ng-md-icon ng-show="showFilter" icon="close" style="fill:#333" size="24"></ng-md-icon>
+                <md-tooltip ng-if="!showFilter">show filter</md-tooltip>
+                <md-tooltip ng-if="showFilter">hide filter</md-tooltip>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content flex style="padding-bottom: 0px; background: #fff" id="networkWrapper">
+        <sv-element-loader message="loadingMessage" show="showLoader"></sv-element-loader>
+        <div ng-show="DataProvider.data[publinId].request !== 'pending'" id="mynetwork"></div>
+    </md-content>
+</md-card>
+

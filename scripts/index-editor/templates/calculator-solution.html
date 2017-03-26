@@ -1,0 +1,18 @@
+<div ng-show="showTab!='showMathScope' && showTab!='showHelp'">
+    <div ng-if="showSolution" style="overflow: auto" class="pa-16 bg-white-dark">
+        <div ng-repeat="solution in solutions track by $index" ng-if="solution != null">
+            <div layout="row" layout-align="start center">
+                <span style="padding-left:20px" ng-bind-html="solution.txt"></span></div>
+            <div ng-if="solution.error" style="font-family: monospace; color: indianred;padding: 4px;">
+                {{solution.error}}
+            </div>
+        </div>
+    </div>
+    <div resizable r-directions="['bottom']" ng-keyup="checkShiftEnter($event)">
+        <div id="editorInput"
+             ng-model="editorInput"
+             ui-ace="{theme:'tomorrow',mode: 'javascript',onLoad: aceLoaded,enableSnippets: true,enableLiveAutocompletion: true}"
+             class="pa-16">
+        </div>
+    </div>
+</div>

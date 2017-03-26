@@ -1,0 +1,27 @@
+<md-card layout="column">
+    <md-toolbar class="bg-white co-black-lighten pa-16">
+        <div layout="row" layout-align="space-between start">
+            <span ng-bind="name"></span>
+        </div>
+    </md-toolbar>
+    <md-content class="pa-16" flex style="background: #fff; padding-top: 0px !important;">
+        <div layout="row" layout-align="space-between start">
+            <span>
+                <div ng-bind-html="contact" style="font-size: 80%"></div>
+                    <md-divider style="margin: 16px 0;"></md-divider>
+                <div style="font-size: 80%" layout="column" layout-align=" start">
+
+                    <span>{{::pub}}</span>
+                    <span>{{::authorPerPub}}</span>
+                    <span>{{::citesNumber}}</span>
+                    <span>{{::citPerPub}}</span>
+                </div>
+            </span>
+            <div layout="column" layout-align=" start">
+                <img ng-src="{{profil}}" alt="">
+            </div>
+        </div>
+        <div ng-bind-html="About"></div>
+    </md-content>
+</md-card>
+

@@ -1,0 +1,272 @@
+.resizable{position:relative}.resizable.no-transition{transition:none!important}.rg-bottom,.rg-left,.rg-right,.rg-top{display:block;width:14px;height:14px;line-height:14px;position:absolute;z-index:1;-moz-user-select:-moz-none;-ms-user-select:none;-webkit-user-select:none;user-select:none;background:0 0}.rg-bottom span,.rg-left span,.rg-right span,.rg-top span{position:absolute;box-sizing:border-box;display:block;border:1px solid #ccc}.rg-left span,.rg-right span{border-width:0 1px;top:50%;margin:-10px 0 0 3.5px;height:20px;width:7px}.rg-bottom span,.rg-top span{border-width:1px 0;left:50%;margin:3.5px 0 0 -10px;width:20px;height:7px}.rg-top{cursor:row-resize;width:100%;top:0;left:0;margin-top:-14px}.rg-right{cursor:col-resize;height:100%;right:0;top:0;margin-right:-14px}.rg-bottom{cursor:row-resize;width:100%;bottom:0;left:0;margin-bottom:-14px}.rg-left{cursor:col-resize;height:100%;left:0;top:0;margin-left:-14px}
+#index-calc{
+    position: relative;
+}
+#editorInput {
+    min-height: 200px;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.toolbar-btn {
+    margin: 0;
+    opacity: 0.7;
+    line-height: 28px;
+    min-height: 28px;
+    vertical-align: top;
+}
+
+.toolbar-select {
+    margin: 0;
+    padding: 0;
+    font-size: 70%;
+    min-height: 10px;
+    line-height: 20px;
+    height: 28px;
+    vertical-align: top;
+    border-bottom-width: 0 !important;
+}
+
+.badge {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+    background: teal;
+    border-radius: 50%;
+    font-size: 8px;
+    line-height: 14px;
+    text-align: center;
+    color: #fff;
+}
+
+/*md-dialog.fullscreen-dialog {*/
+/*max-width: 100%;*/
+/*max-height: 100%;*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*border-radius: 0;*/
+/*}*/
+
+
+index-editor md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
+    background:rgb(0,75,90);
+}
+index-editor .chart-tabs{
+    height: 400px;
+    /*height: 800px;*/
+}
+index-editor .chartHeight {
+    height: 352px;
+    /*height: 752px;*/
+}
+
+.bottom-sheet-btn-wrapper{
+    display: inline-flex;
+}
+
+.bottom-sheet-btn{
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 8px;
+    margin: 0 4px;
+    max-width: calc(100% / 6);
+    min-width:40px;
+    transition: background .2s ease;
+    border-radius: 3px;
+}
+.bottom-sheet-title{
+    padding:8px 8px 0;
+    color: #666;
+}
+.bottom-sheet-btn:hover{
+    background: rgba(0,0,0,0.2);
+}
+.bottom-sheet-btn > span{
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #666;
+}
+.bottom-sheet-btn ng-md-icon{
+    display: block;
+    margin-bottom: -6px;
+}
+.sv-radio-group input {
+    position: absolute;
+    z-index: -1;
+}
+.table-mathscope{
+    width: 100%;
+}
+.table-mathscope,
+.table-mathscope th,
+.table-mathscope td{
+    border: 0px solid transparent;
+    border-collapse: collapse;
+}
+.table-mathscope td{
+    padding:8px;
+}
+.table-mathscope th, .table-mathscope td {
+    border-bottom: 1px solid #ddd;
+}
+.table-mathscope input{
+    border: 0px solid transparent;
+}
+/*
+*
+* Charts Settings
+*
+*/
+.calc-chart-wrapper md-tab-content{
+    overflow: hidden;
+}
+.chartSettings {
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    display: block;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -moz-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -ms-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -o-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.chartSettings md-content{
+    background: transparent;
+}
+
+.chartSettingsBtn {
+    width: 60%;
+    max-width: calc(100% - 320px);
+    height: 100%;
+    float:left;
+    position: relative;
+    outline: 0;
+    transition: background .2s ease;
+    background: rgba(0,0,0,0.03)
+}
+.hideSettings .chartSettingsBtn{
+    background: rgba(0,0,0,0)
+}
+.hideSettings .chartSettingsBtn .icon-vert-center{
+    right:100%;
+}
+.chartSettingsBtn .icon-vert-center{
+    top: calc(50% - 16px);
+    position: absolute;
+    margin-left: 3px;
+    outline: 0;
+    right:0;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -moz-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -ms-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -o-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.chartSettingsScroll {
+    background: #fff;
+    width: 40%;
+    min-width: 320px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    float:right;
+    padding-bottom: 60px;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px -2px rgba(0, 0, 0, 0.14) inset;
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px -2px rgba(0, 0, 0, 0.14) inset;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px -2px rgba(0, 0, 0, 0.14) inset;
+}
+.hideSettings{
+    -webkit-transform: translate3d(100%,0,0);
+    -moz-transform: translate3d(100%,0,0);
+    -ms-transform: translate3d(100%,0,0);
+    -o-transform: translate3d(100%,0,0);
+    transform: translate3d(100%,0,0);
+}
+index-editor .md-tab.md-active svg{
+    fill:rgb(0,75,90);
+}
+.btn-removeTab{
+    background: transparent;
+    position: absolute;
+    top:3px;
+    right:0;
+    width: 20px;
+    height: 20px;
+    border-radius:50%;
+    outline: 0;
+    border:0;
+    padding:0;
+    margin:0;
+    opacity:0.1;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -moz-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -ms-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -o-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+}
+md-tab-item:hover .btn-removeTab{
+    opacity:1;
+}
+.vAccordion--default v-pane.is-expanded > v-pane-header{
+    font-weight:bold;
+}
+
+
+.index-calculator-graph-options-elements-wrapper{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+}
+.elemChip{
+    padding:2px;
+    margin: 5px;
+    white-space:nowrap;
+    background: #eee;
+}
+.elemChip ng-md-icon{
+    cursor: pointer;
+    opacity:0.2;
+    -webkit-transition: opacity 0.2s ease;
+    -moz-transition: opacity 0.2s ease;
+    -ms-transition: opacity 0.2s ease;
+    -o-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+}
+.elemChip:hover ng-md-icon{
+    opacity:1;
+}
+.btn-calc-delete{
+    min-height:20px;
+    height: 30px !important;
+    margin-top: 12px !important;
+}
+
+.ace_tooltip{
+    display: none !important;
+}
+.ace_gutter-cell.ace_info,
+.ace_gutter-cell.ace_error,
+.ace_gutter-cell.ace_warning{
+    background-image: none !important;;
+}
+.highcharts-root text{
+    text-shadow: 0px 0px #000000 !important;
+    /*font-size: 140% !important;*/
+}
+/*.highcharts-xaxis-labels{*/
+    /*transform: translateY(10px);*/
+/*}*/

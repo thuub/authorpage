@@ -1,0 +1,74 @@
+<div class="sv-publist-checkbox-wrapper transition" ng-if="showSelectBox">
+    <md-checkbox aria-label="checkbox" ng-model="publication.checkForExport"></md-checkbox>
+</div>
+<div class="sv-publist-info transition">
+    <h3 ng-click="publication.showDesc = !publication.showDesc">
+        <span ng-if="SETTINGS_PUBLICATIONS.order.title == 0">{{ publication.Title }}</span>
+        <span ng-if="SETTINGS_PUBLICATIONS.order.author == 0"><span ng-repeat="authors in publication.Authors">{{ authors.Given}} {{ authors.Family}}<span ng-if="!$last">,</span></span></span>
+        <span ng-if="SETTINGS_PUBLICATIONS.order.journal == 0">{{ publication.Journal }}</span>
+    </h3>
+    <h4>
+        <span ng-if="SETTINGS_PUBLICATIONS.order.title == 1">{{ publication.Title }}</span>
+        <span ng-if="SETTINGS_PUBLICATIONS.order.author == 1"><span ng-repeat="authors in publication.Authors">{{ authors.Given}} {{ authors.Family}}<span ng-if="!$last">,</span></span></span>
+        <span ng-if="SETTINGS_PUBLICATIONS.order.journal == 1">{{ publication.Journal }}</span>
+    </h4>
+    <p>
+        <span ng-if="SETTINGS_PUBLICATIONS.order.title == 2">{{ publication.Title }}</span>
+        <span ng-if="SETTINGS_PUBLICATIONS.order.author == 2"><span ng-repeat="authors in publication.Authors">{{ authors.Given}} {{ authors.Family}}<span ng-if="!$last">,</span></span></span>
+        <span ng-if="SETTINGS_PUBLICATIONS.order.journal == 2">{{ publication.Journal }}</span>
+    </p>
+</div>
+<div class="sv-publist-counter transition">
+    <span ng-if="SETTINGS_PUBLICATIONS.showCites" class="hint--left" aria-label="Cites: {{publication.Citescount}}">{{publication.Citescount}}</span>
+    <!--<span ng-if="SETTINGS_PUBLICATIONS.showSources" class="hint&#45;&#45;left" aria-label="Quellen Anzahl: {{publication.Sourcescount}}">{{publication.Sourcescount}}</span>-->
+</div>
+<div ng-if="publication.showDesc" class="pub-abstract-wrapper">
+    <publication-abstract publication-id="publication.Id" publin-id="publinId"></publication-abstract>
+    <div class="pub-bold pa-t-8" ng-if="publication.Cites.length >0">Cites by</div>
+    <ol class="pub-abs-maxheight200">
+        <li ng-repeat="cites in publication.Cites" style="list-style-type: decimal-leading-zero; overflow: initial;">
+            <div class="sv-publist-info transition">
+                <h3>
+                    <span ng-if="SETTINGS_PUBLICATIONS.order.title == 0">{{ cites.Title }}</span>
+                    <span ng-if="SETTINGS_PUBLICATIONS.order.author == 0"><span ng-repeat="authors in cites.Authors">{{ authors.Given}} {{ authors.Family}}<span ng-if="!$last">,</span></span></span>
+                    <span ng-if="SETTINGS_PUBLICATIONS.order.journal == 0">{{ cites.Journal }}</span>
+                </h3>
+                <h4>
+                    <span ng-if="SETTINGS_PUBLICATIONS.order.title == 1">{{ cites.Title }}</span>
+                    <span ng-if="SETTINGS_PUBLICATIONS.order.author == 1"><span ng-repeat="authors in cites.Authors">{{ authors.Given}} {{ authors.Family}}<span ng-if="!$last">,</span></span></span>
+                    <span ng-if="SETTINGS_PUBLICATIONS.order.journal == 1">{{ cites.Journal }}</span>
+                </h4>
+                <p>
+                    <span ng-if="SETTINGS_PUBLICATIONS.order.title == 2">{{ cites.Title }}</span>
+                    <span ng-if="SETTINGS_PUBLICATIONS.order.author == 2"><span ng-repeat="authors in cites.Authors">{{ authors.Given}} {{ authors.Family}}<span ng-if="!$last">,</span></span></span>
+                    <span ng-if="SETTINGS_PUBLICATIONS.order.journal == 2">{{ cites.Journal }}</span>
+                </p>
+            </div>
+        </li>
+    </ol>
+    <!--<div class="pub-link-wrapper" layout="row" layout-align="start start">-->
+
+        <!--<md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" target="_blank" href="//google.com">-->
+            <!--<ng-md-icon icon="google-scholar" style="fill:#999" size="24"></ng-md-icon>-->
+            <!--<md-tooltip md-direction="top">Google Scholar</md-tooltip>-->
+        <!--</md-button>-->
+
+        <!--<md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" target="_blank" href="//academic.microsoft.com/#/search?iq=%2540xyz%2520zxy%2520%2540&q=xyz%20zxy%20&filters=&from=0&sort=0m">-->
+            <!--<ng-md-icon icon="windows" style="fill:#999" size="24"></ng-md-icon>-->
+            <!--<md-tooltip md-direction="top">Microsoft Academic Graph</md-tooltip>-->
+        <!--</md-button>-->
+        <!--<md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" target="_blank" href="//www.semanticscholar.org/search?q=sven%20groppe&sort=relevance&ae=false">-->
+            <!--<ng-md-icon icon="semanticScholar" style="fill:#999" size="24"></ng-md-icon>-->
+            <!--<md-tooltip md-direction="top">SemancticScholar</md-tooltip>-->
+        <!--</md-button>-->
+        <!--<md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" target="_blank" href="//www.semanticscholar.org/search?q=sven%20groppe&sort=relevance&ae=false">-->
+            <!--<ng-md-icon icon="dblp" style="fill:#333" size="24"></ng-md-icon>-->
+            <!--<md-tooltip md-direction="top">DBLP</md-tooltip>-->
+        <!--</md-button>-->
+
+        <!--<md-button class="md-icon-button toolbar-top-overwrite" aria-label="Settings" target="_blank" href="//www.semanticscholar.org/search?q=sven%20groppe&sort=relevance&ae=false">-->
+            <!--<ng-md-icon icon="doi" style="fill:#333" size="24"></ng-md-icon>-->
+            <!--<md-tooltip md-direction="top">DOI</md-tooltip>-->
+        <!--</md-button>-->
+    <!--</div>-->
+</div>

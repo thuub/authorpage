@@ -1,0 +1,20 @@
+<table class="table-mathscope">
+    <thead>
+    <tr>
+        <td><b>key</b></td>
+        <td colspan="2"><b>data</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="(key, data) in mathscope">
+        <td><input type="text" ng-model="key"></td>
+        <td><input type="text" ng-model="data"></td>
+        <td ng-click="removeFromMathscope(key)" style="padding:0">
+            <md-icon class="md-secondary md-hue-3">
+                <ng-md-icon icon="remove_from_queue" style="fill: {{iconColors.piechart}}" size="20"></ng-md-icon>
+                <md-tooltip>remove</md-tooltip>
+            </md-icon>
+        </td>
+    </tr>
+    </tbody>
+</table>

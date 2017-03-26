@@ -1,0 +1,32 @@
+{
+  "name": "Autorenwebseite",
+  "authors": [
+    "h1ps"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-material": "^1.1.1",
+    "angular-material-icons": "^0.7.1",
+    "vis": "^4.16.1",
+    "highcharts": "5",
+    "mathjs": "^3.6.0",
+    "angular-ui-ace": "bower",
+    "ace-builds": "^1.2.5",
+    "angular-resizable": "^1.2.0",
+    "highcharts-ng": "^0.0.13",
+    "clipboard": "^1.5.16",
+    "angular-clipboard": "^1.5.0"
+  }
+}

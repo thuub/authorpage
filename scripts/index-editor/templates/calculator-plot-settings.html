@@ -1,0 +1,220 @@
+<div class="chartSettings" ng-class="{ 'hideSettings': hideSettings}">
+    <div class="chartSettingsBtn" ng-click="hideSettings = !hideSettings">
+        <ng-md-icon class="icon-vert-center" style="fill:#333" icon="settings" size="24"></ng-md-icon>
+    </div>
+    <div class="chartSettingsScroll md-whiteframe-2dp pa-16">
+        <h3 class="md-title" layout="row" layout-align="space-between start" style="margin:0;">
+
+            <span>Plot options</span>
+            <md-button class="md-icon-button" ng-click="hideSettings = !hideSettings" aria-label="cancel"
+                       style="padding-top:0;">
+                <ng-md-icon icon="close" style="fill:#666" size="24"></ng-md-icon>
+            </md-button>
+
+
+        </h3>
+
+        <div style="height: calc(100% - 40px); overflow-y: auto; overflow-x:hidden">
+            <v-accordion id="my-accordion" control="accordion" class="vAccordion--default">
+                <v-pane>
+                    <v-pane-header>General</v-pane-header>
+                    <v-pane-content>
+                        <md-content>
+                            <div layout="column">
+                                <span flex="100">
+                                    <md-radio-group layout="row" layout-align="start start" ng-model="tab.chartData.options.chart.type" ng-if="tab.chartData.options.chart.type == 'line' || tab.chartData.options.chart.type == 'spline'  ">
+                                        <md-radio-button value="line"> line </md-radio-button>
+                                        <md-radio-button value="spline">spline</md-radio-button>
+                                    </md-radio-group>
+                                </span>
+                                <span flex="100">
+                                    <md-input-container flex="50" class="calc-input-container">
+                                        <label>Allow Zoom</label>
+                                        <md-select ng-model="tab.chartData.options.chart.zoomType">
+                                            <md-option value="none">none</md-option>
+                                            <md-option value="x">x</md-option>
+                                            <md-option value="y">y</md-option>
+                                            <md-option value="xy">xy</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </span>
+                            </div>
+                        </md-content>
+                    </v-pane-content>
+                </v-pane>
+
+                <v-pane expanded>
+                    <v-pane-header>Title</v-pane-header>
+                    <v-pane-content>
+                        <md-content>
+                            <div layout="row">
+                                <md-input-container flex="70" class="calc-input-container">
+                                    <label>Chart title</label>
+                                    <input autofocus ng-model="tab.chartData.options.title.text">
+                                </md-input-container>
+                                <md-input-container flex="30" class="calc-input-container">
+                                    <label>Align</label>
+                                    <md-select ng-model="tab.chartData.options.title.align">
+                                        <md-option value="left">left</md-option>
+                                        <md-option value="center">center</md-option>
+                                        <md-option value="right">right</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                            <div layout="row">
+                                <md-input-container flex="70" class="calc-input-container">
+                                    <label>Subtitle</label>
+                                    <input ng-model="tab.chartData.options.subtitle.text">
+                                </md-input-container>
+
+                                <md-input-container flex="30" class="calc-input-container">
+                                    <label>Align</label>
+                                    <md-select ng-model="tab.chartData.options.subtitle.align">
+                                        <md-option value="left">left</md-option>
+                                        <md-option value="center">center</md-option>
+                                        <md-option value="right">right</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </md-content>
+                    </v-pane-content>
+                </v-pane>
+                <v-pane>
+                    <v-pane-header>xAxis</v-pane-header>
+                    <v-pane-content>
+                        <md-content layout="row">
+                            <md-input-container flex="70" class="calc-input-container">
+                                <label>Legend</label>
+                                <input autofocus ng-model="tab.chartData.options.xAxis.title.text">
+                            </md-input-container>
+                            <md-input-container flex="30" class="calc-input-container">
+                                <label>Align</label>
+                                <md-select ng-model="tab.chartData.options.xAxis.title.align">
+                                    <md-option value="high">right</md-option>
+                                    <md-option value="middle">middle</md-option>
+                                    <md-option value="low">left</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-content>
+                        <md-content layout="row" layout-align="start end">
+                            <md-input-container flex="80" class="calc-input-containe">
+                                <label>Select from collected Data</label>
+                                <md-select ng-model="value23" ng-change="selectToChartxAxisCategories(tab,value23)" md-on-close="value23 = undefined">
+
+                                    <md-option ng-repeat="(value,key) in plotArray" ng-value="key">{{value}}</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-button class="md-icon-button" aria-label="delete" ng-click="addXAxis(tab)">
+                                <ng-md-icon icon="add_box" style="fill:#4caf50; outline:0;margin-top: 8px;" size="20"></ng-md-icon>
+                                <md-tooltip md-direction="left">AddAxis</md-tooltip>
+                            </md-button>
+                        </md-content>
+                        <md-content layout="column">
+                            <div class="pa-tb-8" style="overflow-x:auto;">
+                                <span ng-repeat="xaxis in tab.chartData.options.xAxis.categories track by $index" class="elemChip">
+                                    <span contenteditable="true" style="min-width: 10px; display: inline-block;" ng-model="tab.chartData.options.xAxis.categories[$index]"></span>
+                                        <ng-md-icon icon="close" style="fill:#333; outline:0;" size="10" ng-click="removeXAxis($index,tab)"></ng-md-icon>
+                                </span>
+                            </div>
+
+                        </md-content>
+                    </v-pane-content>
+                </v-pane>
+                <v-pane>
+                    <v-pane-header>yAxis</v-pane-header>
+                    <v-pane-content>
+                        <md-content layout="row">
+                            <md-input-container flex="70" class="calc-input-container">
+                                <label>Legend</label>
+                                <input autofocus ng-model="tab.chartData.options.yAxis.title.text">
+                            </md-input-container>
+                            <md-input-container flex="30" class="calc-input-container">
+                                <label>Align</label>
+                                <md-select ng-model="tab.chartData.options.yAxis.title.align">
+                                    <md-option value="high">top</md-option>
+                                    <md-option value="middle">middle</md-option>
+                                    <md-option value="low">bottom</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-content>
+                        <md-content layout="row" layout-align="start end">
+                            <md-input-container flex="80" style="margin-top: 12px">
+                                <label>Select from collected Data</label>
+                                <md-select ng-model="value22" ng-change="selectToChartyAxisCategories(tab,value22)" md-on-close="value22 = undefined">
+                                    <md-option ng-repeat="(value,key) in plotArray" ng-value="key">{{value}}</md-option>
+                                </md-select>
+                            </md-input-container>
+
+                            <md-button class="md-icon-button" aria-label="delete" ng-click="addYAxis(tab)" style="margin-top: 5px !important;">
+                                <ng-md-icon icon="add_box" style="fill:#4caf50; outline:0;margin-top: 8px;" size="20"></ng-md-icon>
+                                <md-tooltip md-direction="left">AddAxis</md-tooltip>
+                            </md-button>
+
+                        </md-content>
+                        <md-content layout="column">
+                            <div class="pa-tb-8" style="overflow-x:auto;">
+                                <span ng-repeat="xaxis in tab.chartData.options.yAxis.categories track by $index"
+                                      class="elemChip">
+                                    <span contenteditable="true" style="min-width: 10px; display: inline-block;" ng-model="tab.chartData.options.yAxis.categories[$index]"></span>
+                                        <ng-md-icon icon="close" style="fill:#333; outline:0;" size="10" ng-click="removeYAxis($index,tab)"></ng-md-icon>
+                                </span>
+                            </div>
+                        </md-content>
+                    </v-pane-content>
+                </v-pane>
+                <v-pane>
+                    <v-pane-header>Series</v-pane-header>
+                    <v-pane-content>
+                        <span ng-if="tab.chartData.options.chart.type == 'line'  || tab.chartData.options.chart.type == 'spline'|| tab.chartData.options.chart.type == 'column'">
+                        <md-content layout="column" ng-repeat="series in tab.chartData.series"
+                                    style="background: #FAFAFA;">
+                            <md-content layout="row">
+                                <md-input-container flex="40" class="calc-input-container">
+                                    <label>Name</label>
+                                    <input ng-model="series.name">
+                                </md-input-container>
+                                <md-input-container flex="40" class="calc-input-container">
+                                    <label>Stack</label>
+                                    <input ng-model="series.stack">
+                                </md-input-container>
+
+                                <md-button class="md-icon-button btn-calc-delete" aria-label="delete" ng-click="deleteSerie(tab,$index)">
+                                    <ng-md-icon icon="delete" style="fill:#f44336; outline:0;margin-top: 8px;" size="20"></ng-md-icon>
+                                    <md-tooltip md-direction="left">Delete whole serie</md-tooltip>
+                                </md-button>
+
+                            </md-content>
+                            <md-content layout="row" layout-align="start end">
+                                <md-input-container flex="80" class="calc-input-container">
+                                    <label>Select from collected Data</label>
+                                    <md-select ng-model="value11" ng-change="selectToChartData(tab,$index,value11)" md-on-close="value11 = undefined">
+                                        <md-optgroup label="collected">
+                                            <md-option ng-repeat="(value,key) in plotArray" ng-value="key">{{value}}</md-option>
+                                        </md-optgroup>
+                                        <md-optgroup label="general">
+                                            <md-option ng-value="1">SUMME(N) 1</md-option>
+                                        </md-optgroup>
+                                    </md-select>
+                                </md-input-container>
+
+                                <md-button class="md-icon-button" aria-label="delete" ng-click="addSeriesData($index,tab)">
+                                    <ng-md-icon icon="add_box" style="fill:#4caf50; outline:0;margin-top: 8px;" size="20"></ng-md-icon>
+                                    <md-tooltip md-direction="left">Add value</md-tooltip>
+                                </md-button>
+                            </md-content>
+                            <div class="pa-tb-8" style="overflow-x:auto;">
+                                <span ng-repeat="seriesElem in series.data track by $index" class="elemChip">
+                                    <span contenteditable="true" style="min-width: 10px; display: inline-block;" ng-model="series.data[$index]" ng-blur="castToNumber($index,$parent.$index,tab)"></span>
+                                    <ng-md-icon icon="close" style="fill:#333; outline:0;" size="10" ng-click="removeSeriesData($index,$parent.$index,tab)"></ng-md-icon>
+                                </span>
+                            </div>
+                            <md-divider></md-divider>
+                        </md-content>
+                        <md-button style="float:right" ng-click="addSerie(tab)" class="md-primary">add new serie</md-button>
+                    </span>
+                    </v-pane-content>
+                </v-pane>
+            </v-accordion>
+        </div>
+    </div>
+</div>
